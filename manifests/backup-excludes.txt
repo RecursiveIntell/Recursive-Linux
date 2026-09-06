@@ -1,0 +1,34 @@
+# Restic patterns reviewed for the selective first backup.
+# Do not add broad `data`, `runs`, `results`, `models`, or `build` exclusions.
+
+# Language/package caches and reproducible dependency trees
+**/node_modules/**
+**/.pnpm-store/**
+**/__pycache__/**
+**/.pytest_cache/**
+**/.mypy_cache/**
+**/.ruff_cache/**
+**/.tox/**
+**/.nox/**
+**/.venv/**
+**/venv/**
+**/.gradle/caches/**
+**/.next/cache/**
+
+# Reproducible compiler outputs
+**/target/debug/incremental/**
+**/target/debug/build/**
+**/target/release/incremental/**
+**/.pio/build/**
+
+# Browser/model caches, not user browser profile state
+/home/sikmindz/.config/google-chrome/OptGuideOnDeviceModel/**
+/home/sikmindz/.config/google-chrome/optimization_guide_model_store/**
+/home/sikmindz/.config/google-chrome/GPUPersistentCache/**
+/home/sikmindz/.config/google-chrome/ShaderCache/**
+/home/sikmindz/.config/google-chrome/GrShaderCache/**
+/home/sikmindz/.config/google-chrome/component_crx_cache/**
+/home/sikmindz/.config/google-chrome/extensions_crx_cache/**
+
+# Never traverse virtual/container filesystems through source roots
+**/.local/share/containers/storage/overlay/**

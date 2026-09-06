@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "mode": "github-selective-encrypted-snapshot",
+  "always_include": [
+    "~/Documents",
+    "~/Downloads",
+    "~/Pictures",
+    "~/Videos",
+    "~/Desktop",
+    "~/Music"
+  ],
+  "selective_source_roots": [
+    "~/Coding",
+    "~/projects",
+    "~/Projects"
+  ],
+  "encrypted_sensitive_candidates": [
+    "~/.ssh",
+    "~/.gnupg",
+    "~/.config/Hermes",
+    "~/.config/systemd/user",
+    "~/.local/share/keyrings",
+    "~/.local/state/mnemes",
+    "~/.local/state/semantic-memory",
+    "~/.local/state/system-health-monitor"
+  ],
+  "hermes_state_root": "~/.hermes",
+  "sqlite_backup_manifest": "manifests/sqlite-databases.txt",
+  "github_covered_criteria": [
+    "working tree and index clean including untracked files",
+    "accessible allowed GitHub remote",
+    "HEAD and every non-remote local ref exactly represented remotely",
+    "no stash or notes absent from remote",
+    "submodules initialized and clean",
+    "ignored content contains only explicitly rebuildable path classes"
+  ],
+  "upload_priority": [
+    "personal-non-git",
+    "sqlite-consistent-state",
+    "dirty-untracked-local-only-source",
+    "unknown-ignored-artifacts",
+    "selected-encrypted-app-state",
+    "github-covered-source-if-quota-allows"
+  ]
+}

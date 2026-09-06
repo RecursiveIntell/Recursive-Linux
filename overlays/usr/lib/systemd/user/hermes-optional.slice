@@ -1,0 +1,10 @@
+[Unit]
+Description=Hermes optional and preemptible workload slice
+
+[Slice]
+CPUWeight=25
+IOWeight=25
+MemoryHigh=4G
+MemoryMax=6G
+ManagedOOMMemoryPressure=kill
+ManagedOOMMemoryPressureLimit=55%

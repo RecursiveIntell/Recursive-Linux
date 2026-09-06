@@ -1,0 +1,10 @@
+[Unit]
+Description=Hermes interactive workload slice
+
+[Slice]
+CPUWeight=200
+IOWeight=200
+MemoryHigh=8G
+MemoryMax=11G
+ManagedOOMMemoryPressure=kill
+ManagedOOMMemoryPressureLimit=75%

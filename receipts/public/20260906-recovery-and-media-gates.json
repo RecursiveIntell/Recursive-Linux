@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "kind": "hermes-workbench-public-recovery-and-media-gates",
+  "evidence_cutoff": "2026-09-06",
+  "evidence_state": "local_verified_partial",
+  "media": {
+    "fedora_release": 44,
+    "architecture": "x86_64",
+    "openpgp_signature": {
+      "status": "good",
+      "signing_identity": "Fedora (44)",
+      "key_fingerprint": "36F612DCF27F7D1A48A835E4DBFCF71C6D9F90A6"
+    },
+    "artifacts": [
+      {
+        "name": "Fedora-KDE-Desktop-Live-44-1.7.x86_64.iso",
+        "sha256_match_against_signed_manifest": true
+      },
+      {
+        "name": "Fedora-Everything-netinst-x86_64-44-1.7.iso",
+        "sha256_match_against_signed_manifest": true
+      }
+    ],
+    "boundary": "Download integrity and provenance only; not hardware qualification or write authority."
+  },
+  "recovery": {
+    "existing_repository_full_pack_read": {
+      "packs_checked": 1848,
+      "packs_total": 1848,
+      "errors": 0
+    },
+    "current_snapshot": {
+      "completed": true,
+      "files_processed": 577490,
+      "logical_bytes": 104010329559,
+      "selected_sqlite_databases": 152,
+      "sqlite_integrity_passed": 152,
+      "critical_database_stream_hash_checks": 3,
+      "critical_database_stream_hash_matches": 3
+    },
+    "sample_restore": {
+      "logical_bytes": 6313585712,
+      "content_and_metadata_checks": "passed",
+      "large_file_over_one_gib": true,
+      "unicode_path": true,
+      "symlink": true,
+      "restored_sqlite_integrity": "passed",
+      "restored_semantic_search_nonempty": true
+    },
+    "full_restore": {
+      "complete": false,
+      "state": "encrypted disposable target in progress",
+      "credentials_must_not_be_restored_to_unencrypted_storage": true
+    },
+    "independent_password_retrieval": {
+      "complete": false,
+      "state": "operator action required outside the laptop"
+    },
+    "off_device_independence": {
+      "complete": false,
+      "state": "attached external disk is not an independently located copy"
+    }
+  },
+  "privacy": {
+    "contains_private_credentials": false,
+    "contains_personal_paths": false,
+    "contains_snapshot_identifier": false,
+    "contains_raw_file_inventory": false,
+    "underlying_detailed_receipts": "private and untracked"
+  },
+  "claim_boundary": "Supports local repository/media/snapshot/sample-restore claims only. Full recovery, independent credential custody, hardware qualification, release readiness, and physical-media authority remain blocked.",
+  "complete": false
+}

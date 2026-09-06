@@ -1,0 +1,13 @@
+# Live SQLite stores requiring the online backup API.
+# Paths are expanded relative to the current user's home.
+~/.hermes/state.db
+~/.hermes/projects.db
+~/.hermes/verification_evidence.db
+~/.hermes/cron/executions.db
+~/.hermes/semantic-memory.db/memory.db
+~/.hermes/cea-telemetry-v2.db
+~/.hermes/cea.db
+~/.hermes/response_store.db
+~/.hermes/kanban.db
+~/.hermes/context-governor/.receipt-index.sqlite3
+~/.hermes/agent-graph-ops/template-policy.sqlite

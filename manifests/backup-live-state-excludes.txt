@@ -1,0 +1,41 @@
+# Exact live database files are excluded because transactionally consistent
+# copies from scripts/stage_sqlite_backups.py are included instead.
+/home/sikmindz/.hermes/state.db
+/home/sikmindz/.hermes/state.db-wal
+/home/sikmindz/.hermes/state.db-shm
+/home/sikmindz/.hermes/projects.db
+/home/sikmindz/.hermes/projects.db-wal
+/home/sikmindz/.hermes/projects.db-shm
+/home/sikmindz/.hermes/verification_evidence.db
+/home/sikmindz/.hermes/verification_evidence.db-wal
+/home/sikmindz/.hermes/verification_evidence.db-shm
+/home/sikmindz/.hermes/cron/executions.db
+/home/sikmindz/.hermes/cron/executions.db-wal
+/home/sikmindz/.hermes/cron/executions.db-shm
+/home/sikmindz/.hermes/semantic-memory.db/memory.db
+/home/sikmindz/.hermes/semantic-memory.db/memory.db-wal
+/home/sikmindz/.hermes/semantic-memory.db/memory.db-shm
+/home/sikmindz/.hermes/cea-telemetry-v2.db
+/home/sikmindz/.hermes/cea-telemetry-v2.db-wal
+/home/sikmindz/.hermes/cea-telemetry-v2.db-shm
+/home/sikmindz/.hermes/cea.db
+/home/sikmindz/.hermes/cea.db-wal
+/home/sikmindz/.hermes/cea.db-shm
+/home/sikmindz/.hermes/response_store.db
+/home/sikmindz/.hermes/response_store.db-wal
+/home/sikmindz/.hermes/response_store.db-shm
+/home/sikmindz/.hermes/kanban.db
+/home/sikmindz/.hermes/kanban.db-wal
+/home/sikmindz/.hermes/kanban.db-shm
+/home/sikmindz/.hermes/context-governor/.receipt-index.sqlite3
+/home/sikmindz/.hermes/context-governor/.receipt-index.sqlite3-wal
+/home/sikmindz/.hermes/context-governor/.receipt-index.sqlite3-shm
+/home/sikmindz/.hermes/agent-graph-ops/template-policy.sqlite
+/home/sikmindz/.hermes/agent-graph-ops/template-policy.sqlite-wal
+/home/sikmindz/.hermes/agent-graph-ops/template-policy.sqlite-shm
+
+# Large reproducible/obsolete Hermes projections omitted from the quota-first snapshot.
+/home/sikmindz/.hermes/builds/**
+/home/sikmindz/.hermes/state-snapshots/**
+/home/sikmindz/.hermes/cache/**
+/home/sikmindz/.hermes/logs/**

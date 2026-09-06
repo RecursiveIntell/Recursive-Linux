@@ -1,0 +1,7 @@
+[Unit]
+Description=Hermes connected services
+After=hermes-core.target
+Wants=hermes-core.target
+
+[Install]
+WantedBy=default.target

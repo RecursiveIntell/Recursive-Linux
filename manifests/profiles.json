@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "core": {
+      "default": true,
+      "services": ["hermes-desktop", "semantic-memory-owner", "cua-driver"],
+      "resource_class": "interactive"
+    },
+    "connected": {
+      "default": true,
+      "services": ["tailscaled", "hermes-gateway", "mnemes-tunnel"],
+      "network": "tailnet-first"
+    },
+    "experimental": {
+      "default": false,
+      "container": "hwos-experimental",
+      "resource_class": "preemptible",
+      "egress": "prompted"
+    },
+    "esp32": {"default": false, "container": "hwos-esp32", "devices": ["serial", "usb"]},
+    "android": {"default": false, "container": "hwos-android", "devices": ["adb"]},
+    "godot": {"default": false, "container": "hwos-godot", "graphics": true},
+    "ml-research": {"default": false, "container": "hwos-ml", "resource_class": "preemptible"},
+    "media": {"default": false, "container": "hwos-media", "graphics": true, "audio": true},
+    "travel": {"default": false, "cpu_epp": "power", "disable": ["experimental", "ml-research", "media"]},
+    "privacy": {"default": false, "stop": ["hermes-gateway", "mnemes-tunnel"], "agent_egress": "deny"},
+    "recovery": {"boot_only": true, "hermes_autostart": false}
+  }
+}

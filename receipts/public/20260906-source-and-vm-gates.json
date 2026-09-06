@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "kind": "hermes-workbench-public-source-and-vm-gates",
+  "evidence_cutoff": "2026-09-06",
+  "evidence_state": "local_verified_candidate",
+  "public_claim_boundary": {
+    "supported": [
+      "Project validator passes",
+      "Twenty local unit tests pass",
+      "Both Kickstart files pass Fedora 44 ksvalidator",
+      "All 66 host-manifest items resolve from Fedora 44 repositories",
+      "One disposable UEFI Q35 KVM installation completed and the installed Fedora 44 guest booted to a serial login prompt",
+      "The hardware-media writer is a tested hard-stop quarantine wrapper"
+    ],
+    "not_supported": [
+      "Reproducible build",
+      "Full VM matrix certification",
+      "Hardware readiness",
+      "Production encryption closure",
+      "Release readiness",
+      "Physical-media or internal-disk installation approval"
+    ]
+  },
+  "static_checks": {
+    "project_validator": "passed",
+    "unit_tests": 20,
+    "kickstart_validator": "passed for production template and isolated VM fixture",
+    "package_resolution": {
+      "environment": "Fedora 44 container",
+      "manifest_items": 66,
+      "groups": 2,
+      "packages": 64,
+      "failures": 0,
+      "manifest_sha256": "62de723059270cd647988ce4ea3f1e2f1ce8da357ee00ab99158bac3883e93c0"
+    }
+  },
+  "vm_candidate": {
+    "platform": "UEFI, Q35, KVM, x86_64",
+    "network": "isolated user-mode NAT",
+    "virtual_disk_only": true,
+    "iso_sha256": "d529cbe022ebebff218ba51adfc2ea33f8be77343bd8e806ebe5039d12ba2336",
+    "embedded_kickstart_sha256": "6c05b12a70fb7c2d0906b3776ffe75c190a3f1e3083fdbf6f3f4df65c6912f08",
+    "current_kickstart_sha256": "dffde29a64ad3515ab64f3287498a25228c62637efb931ab1faf0bef2745e6cb",
+    "source_delta_after_run": "Current source only strengthens comments labeling the public insecure test credential and forbidden deployment contexts; the executed embedded fixture hash remains recorded separately.",
+    "install_exit_code": 0,
+    "packages_installed": 1270,
+    "install_log_sha256": "efe9f11fc15e4d2c9739a4db3d379b40dc6116664a8c9f2308512f67ad0f28f2",
+    "boot_log_sha256": "0747cad6dea24ece17b56af316065a05b0313a06b85ecf8fff590d95a8da425a",
+    "disk_integrity": "qemu-img check: no errors",
+    "boot_observations": [
+      "Fedora Linux 44 welcome",
+      "SELinux enforcing",
+      "network target reached",
+      "firewalld active",
+      "sshd active",
+      "zram active",
+      "serial login prompt reached"
+    ]
+  },
+  "hardware_writer_quarantine": {
+    "script_sha256": "740f8a63d7263512ac4de89a4de758093a7501f980105ebd28ac0bd0664143b0",
+    "expected_exit_code": 2,
+    "forbidden_tokens_absent": [
+      "block-device write command",
+      "device-selection variable",
+      "VM Kickstart reference"
+    ],
+    "test": "passed"
+  },
+  "privacy": {
+    "contains_private_credentials": false,
+    "contains_deliberately_public_insecure_vm_test_credential": true,
+    "vm_test_credential_boundary": "Disposable isolated/NAT VM fixture only; never hardware, bridged, externally reachable, or persistent use.",
+    "contains_personal_paths": false,
+    "contains_raw_backup_inventory": false,
+    "raw_receipts": "private and ignored"
+  },
+  "remaining_gates": [
+    "Independently retrievable backup credential",
+    "Full isolated restore",
+    "Versioned source identity",
+    "Repeated and failure-injected VM matrix",
+    "Live-media hardware qualification",
+    "Recovery and dual-boot media",
+    "Exact-device approval"
+  ],
+  "complete": false
+}

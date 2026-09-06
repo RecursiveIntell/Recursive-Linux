@@ -1,0 +1,27 @@
+[Unit]
+Description=Hermes PSI pressure governor
+Documentation=file:///usr/share/doc/hermes-workbench-os/DESIGN-v0.2.md
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/libexec/hermes-workbench/hermes_pressure_governor.py --apply --state=%t/hermes-pressure-governor/state.json
+Restart=on-failure
+RestartSec=5s
+RuntimeDirectory=hermes-pressure-governor
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX
+LockPersonality=yes
+MemoryHigh=96M
+MemoryMax=160M
+CPUQuota=10%
+
+[Install]
+WantedBy=graphical-session.target

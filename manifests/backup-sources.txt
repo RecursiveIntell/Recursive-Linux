@@ -1,0 +1,21 @@
+# Paths expanded by scripts/run_backup.py. Missing optional paths are skipped.
+~/Documents
+~/Downloads
+~/Pictures
+~/Videos
+~/Desktop
+~/Music
+~/Coding
+~/projects
+~/Projects
+~/.hermes
+~/.config/Hermes
+~/.config/google-chrome/Default
+~/.config/google-chrome/Local State
+~/.ssh
+~/.gnupg
+~/.local/share/keyrings
+~/.local/state/mnemes
+~/.local/state/semantic-memory
+~/.local/state/system-health-monitor
+~/.local/state/hermes-workbench-backup/sqlite
