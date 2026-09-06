@@ -148,7 +148,7 @@ def load_exclude_patterns(manifests: list[Path]) -> list[str]:
         for raw in manifest.read_text().splitlines():
             line = raw.strip()
             if line and not line.startswith("#"):
-                patterns.append(line)
+                patterns.append(os.path.expandvars(line))
     return patterns
 
 

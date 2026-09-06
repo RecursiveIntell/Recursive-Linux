@@ -94,6 +94,11 @@ def main() -> int:
         ROOT / "scripts/stage_sqlite_backups.py",
         ROOT / "scripts/classify_github_coverage.py",
         ROOT / "scripts/hermes_pressure_governor.py",
+        ROOT / "scripts/wifi_watchdog.sh",
+        ROOT / "scripts/rtw89_disable_aspm.sh",
+        ROOT / "scripts/disk_governor.sh",
+        ROOT / "scripts/system_health_monitor.sh",
+        ROOT / "scripts/build_installer_iso.py",
     ]
     absent = [str(path.relative_to(ROOT)) for path in expected if not path.is_file()]
     if absent:

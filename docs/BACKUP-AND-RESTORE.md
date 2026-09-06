@@ -18,15 +18,15 @@ No upload, authentication, installation, deletion, compression, source-tree modi
 
 ## 2. Observed preflight evidence
 
-Commands were read-only and run from `/home/sikmindz` unless stated otherwise:
+Commands were read-only and run from `$HOME` unless stated otherwise:
 
-- `df -h /home/sikmindz` reported a 458G filesystem, 287G used, 167G available (64%).
+- `df -h $HOME` reported a 458G filesystem, 287G used, 167G available (64%).
 - `rclone`, `google-drive-ocamlfuse`, and `gdrive` are absent. Homebrew and `gog` exist at `/home/linuxbrew/.linuxbrew/bin/`, but `gog` has no configured/authenticated Drive remote per the supplied current facts. No mount containing `drive` or `google` was found with `findmnt`.
-- `du -x -d1 -h /home/sikmindz` reported approximately: `Coding` 73G, `.hermes` 20G, `.cache` 15G, `.local` 63G, `Downloads` 7.2G, `Documents` 1.6G, `Videos` 872M. These are estimates and must be re-measured at execution time.
+- `du -x -d1 -h $HOME` reported approximately: `Coding` 73G, `.hermes` 20G, `.cache` 15G, `.local` 63G, `Downloads` 7.2G, `Documents` 1.6G, `Videos` 872M. These are estimates and must be re-measured at execution time.
 - `Coding` contains roughly 759,510 files, 130,917 directories, 830 symlinks, and 450 sparse files. It contains many Git worktrees/repositories and build outputs.
 - `.hermes` contains roughly 155,392 files, 13,683 directories, 125 symlinks, and 125 sparse files. `.hermes/state.db` is a sparse ~4.8GB logical-size database; it must not be treated as an ordinary static file while active.
 - `.config`, `.local/share`, `.mozilla`, and `.hermes` contain active application state and database/WAL material. `.config` includes Google Chrome and gcloud paths; browser profiles and credentials are sensitive and must not be copied wholesale.
-- The requested repository exists at `/home/sikmindz/Projects/hermes-workbench-os`, but no `.git` metadata was present in that directory during this check. Only this document may be written for this task.
+- The requested repository exists at `$HOME/Projects/hermes-workbench-os`, but no `.git` metadata was present in that directory during this check. Only this document may be written for this task.
 
 The counts and sizes are evidence of topology only, not a backup inventory. Re-run them immediately before the real operation.
 

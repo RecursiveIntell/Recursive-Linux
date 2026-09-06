@@ -1,0 +1,16 @@
+[Unit]
+Description=Hermes Workbench Wi-Fi reliability watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=-%h/.config/hermes-workbench/wifi-watchdog.conf
+ExecStart=/usr/libexec/hermes-workbench/wifi-watchdog.sh
+Restart=always
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

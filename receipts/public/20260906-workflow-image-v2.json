@@ -1,0 +1,78 @@
+{
+  "schema_version": 2,
+  "kind": "recursive-linux-hardware-target-installer-candidate-public-receipt",
+  "evidence_cutoff": "2026-09-06",
+  "completion_boundary": "Local hardware-target installer candidate with static ISO checks and a separate VM-only installation/first-boot result. No physical-media, physical-hardware, installed-UEFI, clean-rebuild, or complete-restoration claim.",
+  "source": {
+    "repository": "hermes-workbench-os",
+    "source_state_at_validation": "local working tree before public commit",
+    "project_validator": "passed",
+    "unit_tests": 34,
+    "kickstart_validation": "both source Kickstarts passed Fedora 44 ksvalidator during the recorded validation work",
+    "package_manifest_specs": 70,
+    "package_resolution": "all declared package/group specs resolved during Fedora 44 validation"
+  },
+  "hardware_target_iso": {
+    "filename": "hermes-workbench-recovery-installer-20260906-v2.iso",
+    "bytes": 1217396736,
+    "sha256": "6f2e1406db4a4d5970f489589d5f1d51549e25e00fb1a88d5d1bd7b4430221fc",
+    "payload_sha256": "95304d40aef4de9ced4c1f4c0e25430d57d9aa29d500c9e1d65f7f56bdfe27ba",
+    "embedded_kickstart_sha256": "917805c4f2d28fa5c51d4d3213a3eb38f265be6bab59bdce506b0b13bc38298c",
+    "static_checks": [
+      "BIOS and UEFI El Torito entries found",
+      "boot configuration references the embedded hardware-target Kickstart",
+      "embedded payload hash matches the locally assembled payload",
+      "checkisomd5 reported PASS"
+    ],
+    "disk_policy": "The Kickstart does not preselect disk clearing, automatic partitioning, a target disk, credentials, or an encryption secret. Installation remains interactive and can still modify storage and boot state.",
+    "physical_devices_written": []
+  },
+  "provenance": {
+    "official_fedora_input_sha256": "bd285201494dd0ba09b54d05ac707de1401668b8512a573edb5922dcf9d7067e",
+    "note": "The v2 ISO was assembled by replacing the Kickstart and hash-matching payload in a first Fedora-derived candidate after the original source medium disconnected. A clean end-to-end rebuild directly from official input has not been completed."
+  },
+  "payload": {
+    "file_count": 23,
+    "included": [
+      "portable Wi-Fi watchdog v5",
+      "topology-driven RTL8852BE-VT ASPM mitigation",
+      "rtw89 module policy",
+      "target-laptop TLP midpoint",
+      "report-only disk governor",
+      "system-health projection",
+      "existing Workbench pressure and profile units"
+    ],
+    "excluded": [
+      "Wi-Fi credentials",
+      "API/OAuth tokens",
+      "browser cookies and passwords",
+      "SSH/GPG private keys",
+      "VPN identity",
+      "mutable Ares/Hermes state",
+      "semantic-memory and Mnemes stores or credentials",
+      "model blobs and machine-specific runtime artifacts"
+    ]
+  },
+  "separate_vm_fixture": {
+    "install_method": "direct installer-kernel boot under QEMU BIOS using the VM-only ISO as the Fedora stage2 and Kickstart source",
+    "anaconda_complete": true,
+    "install_process_exit_code": 0,
+    "qcow2_check": "no errors",
+    "first_boot": "Fedora login prompt reached under the recorded BIOS/QEMU method",
+    "boundary": "This VM-only result does not validate the hardware-target ISO installation path, UEFI-installed-system behavior, or physical hardware."
+  },
+  "separate_host_observation": {
+    "scope": "not Fedora hardware qualification",
+    "observation": "A watchdog recovery path handled one observed rtw89 firmware fault through a bounded NetworkManager radio cycle without unloading the driver or observing a kernel oops.",
+    "boundary": "This is not a general Wi-Fi reliability guarantee."
+  },
+  "not_supported": [
+    "hardware installation readiness",
+    "UEFI-installed-system verification",
+    "physical-media verification",
+    "complete personal-workstation restoration",
+    "general Wi-Fi reliability",
+    "reproducible byte-identical ISO build",
+    "production readiness"
+  ]
+}

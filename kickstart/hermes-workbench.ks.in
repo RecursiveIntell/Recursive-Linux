@@ -12,6 +12,7 @@ timezone America/New_York --utc
 network --bootproto=dhcp --device=link --activate
 firewall --enabled
 selinux --enforcing
+bootloader --append="pcie_aspm=off"
 firstboot --enable
 services --enabled="NetworkManager,firewalld,sshd"
 
@@ -73,7 +74,12 @@ toolbox
 fuse-overlayfs
 slirp4netns
 qemu-guest-agent
-tuned-ppd
+tlp
+tlp-pd
+-power-profiles-daemon
+lm_sensors
+iputils
+util-linux
 systemd-oomd-defaults
 zram-generator-defaults
 usbutils
@@ -84,6 +90,8 @@ bash-completion
 vim-minimal
 -anaconda-webui
 %end
+
+# @HWOS_INSTALL_OVERLAY@
 
 %post --erroronfail --log=/root/hwos-post.log
 set -eu

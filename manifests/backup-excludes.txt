@@ -22,13 +22,13 @@
 **/.pio/build/**
 
 # Browser/model caches, not user browser profile state
-/home/sikmindz/.config/google-chrome/OptGuideOnDeviceModel/**
-/home/sikmindz/.config/google-chrome/optimization_guide_model_store/**
-/home/sikmindz/.config/google-chrome/GPUPersistentCache/**
-/home/sikmindz/.config/google-chrome/ShaderCache/**
-/home/sikmindz/.config/google-chrome/GrShaderCache/**
-/home/sikmindz/.config/google-chrome/component_crx_cache/**
-/home/sikmindz/.config/google-chrome/extensions_crx_cache/**
+$HOME/.config/google-chrome/OptGuideOnDeviceModel/**
+$HOME/.config/google-chrome/optimization_guide_model_store/**
+$HOME/.config/google-chrome/GPUPersistentCache/**
+$HOME/.config/google-chrome/ShaderCache/**
+$HOME/.config/google-chrome/GrShaderCache/**
+$HOME/.config/google-chrome/component_crx_cache/**
+$HOME/.config/google-chrome/extensions_crx_cache/**
 
 # Never traverse virtual/container filesystems through source roots
 **/.local/share/containers/storage/overlay/**

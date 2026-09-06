@@ -57,7 +57,11 @@ toolbox
 fuse-overlayfs
 slirp4netns
 qemu-guest-agent
-tuned-ppd
+tlp
+tlp-pd
+lm_sensors
+iputils
+util-linux
 systemd-oomd-defaults
 zram-generator-defaults
 usbutils

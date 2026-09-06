@@ -9,7 +9,7 @@ timezone America/New_York --utc
 network --bootproto=dhcp --device=link --activate
 firewall --enabled
 selinux --enforcing
-bootloader --location=mbr --boot-drive=vda
+bootloader --location=mbr --boot-drive=vda --append="pcie_aspm=off"
 services --enabled="NetworkManager,firewalld,sshd"
 zerombr
 clearpart --all --initlabel --drives=vda
@@ -74,7 +74,12 @@ toolbox
 fuse-overlayfs
 slirp4netns
 qemu-guest-agent
-tuned-ppd
+tlp
+tlp-pd
+-power-profiles-daemon
+lm_sensors
+iputils
+util-linux
 systemd-oomd-defaults
 zram-generator-defaults
 usbutils
@@ -85,6 +90,8 @@ bash-completion
 vim-minimal
 -anaconda-webui
 %end
+
+# @HWOS_INSTALL_OVERLAY@
 
 %post --erroronfail --log=/root/hwos-post.log
 set -eu

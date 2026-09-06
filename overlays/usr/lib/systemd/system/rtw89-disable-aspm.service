@@ -1,0 +1,12 @@
+[Unit]
+Description=Disable unstable PCIe ASPM states for RTL8852BE-VT
+After=systemd-modules-load.service
+Before=NetworkManager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/hermes-workbench/rtw89-disable-aspm.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

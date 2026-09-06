@@ -41,9 +41,17 @@ def main() -> int:
 
     libexec = output / "usr/libexec/hermes-workbench"
     libexec.mkdir(parents=True, exist_ok=True)
-    governor = libexec / "hermes_pressure_governor.py"
-    shutil.copy2(ROOT / "scripts/hermes_pressure_governor.py", governor)
-    governor.chmod(0o755)
+    script_map = {
+        "hermes_pressure_governor.py": "hermes_pressure_governor.py",
+        "wifi_watchdog.sh": "wifi-watchdog.sh",
+        "rtw89_disable_aspm.sh": "rtw89-disable-aspm.sh",
+        "disk_governor.sh": "disk-governor.sh",
+        "system_health_monitor.sh": "system-health-monitor.sh",
+    }
+    for source_name, installed_name in script_map.items():
+        destination = libexec / installed_name
+        shutil.copy2(ROOT / "scripts" / source_name, destination)
+        destination.chmod(0o755)
 
     docs = output / "usr/share/doc/hermes-workbench-os"
     docs.mkdir(parents=True, exist_ok=True)

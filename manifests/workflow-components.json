@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "hermes-workbench-workflow-components",
+  "target": "HP Laptop 15-fc0xxx workflow recovery installer",
+  "included_in_installer_payload": [
+    {
+      "component": "wifi-watchdog-v5",
+      "source": "scripts/wifi_watchdog.sh",
+      "installed_path": "/usr/libexec/hermes-workbench/wifi-watchdog.sh",
+      "activation": "global user service",
+      "boundary": "NetworkManager radio recovery only; never unloads the rtw89 kernel module"
+    },
+    {
+      "component": "rtw89-aspm-mitigation",
+      "source": "scripts/rtw89_disable_aspm.sh",
+      "installed_path": "/usr/libexec/hermes-workbench/rtw89-disable-aspm.sh",
+      "activation": "system boot oneshot before NetworkManager",
+      "boundary": "discovers the bound endpoint and parent bridge; preserves non-ASPM LnkCtl bits"
+    },
+    {
+      "component": "measured-tlp-midpoint",
+      "source": "overlays/etc/tlp.d/99-hermes-workbench.conf",
+      "installed_path": "/etc/tlp.d/99-hermes-workbench.conf",
+      "activation": "tlp.service and tlp-pd.service",
+      "boundary": "2.9 GHz AMD-pstate midpoint for this laptop; not a universal hardware profile"
+    },
+    {
+      "component": "report-only-disk-governor",
+      "source": "scripts/disk_governor.sh",
+      "installed_path": "/usr/libexec/hermes-workbench/disk-governor.sh",
+      "activation": "global user timer",
+      "boundary": "reports and notifies; has no deletion or offload authority"
+    },
+    {
+      "component": "system-health-projection",
+      "source": "scripts/system_health_monitor.sh",
+      "installed_path": "/usr/libexec/hermes-workbench/system-health-monitor.sh",
+      "activation": "global user service",
+      "boundary": "writes a rebuildable local state projection; it does not repair or delete"
+    },
+    {
+      "component": "pressure-governor-source",
+      "source": "scripts/hermes_pressure_governor.py",
+      "installed_path": "/usr/libexec/hermes-workbench/hermes_pressure_governor.py",
+      "activation": "unit remains governed by the existing profile policy",
+      "boundary": "not promoted beyond its existing source and tests"
+    }
+  ],
+  "intentionally_not_embedded": [
+    "Wi-Fi passwords or NetworkManager connection profiles",
+    "API tokens, OAuth state, browser cookies, SSH or GPG private keys",
+    "Ares/Hermes mutable profile state and semantic-memory databases",
+    "PAIR/Ollama model blobs and machine-specific runtime artifacts",
+    "Mnemes admission keys, fencing tokens, tunnel keys, or remote addresses",
+    "VPN and Tailscale identity state",
+    "personal Chrome profile data",
+    "CPU-router private SSH credentials"
+  ],
+  "post_install_restore_or_bootstrap_required": [
+    "Ares/Hermes runtime and user profile configuration",
+    "semantic-memory and Mnemes stores through their supported restore paths",
+    "PAIR/Ollama models and current routing manifests",
+    "CPU-router and remote-compute credentials",
+    "personal and automation browser profiles",
+    "VPN/Tailscale authentication",
+    "user-selected Wi-Fi connection credentials"
+  ],
+  "physical_media_written": false
+}

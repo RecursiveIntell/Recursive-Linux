@@ -1,0 +1,6 @@
+[Unit]
+Description=Hermes Workbench report-only disk-space check
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/hermes-workbench/disk-governor.sh

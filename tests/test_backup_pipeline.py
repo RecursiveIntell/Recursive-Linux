@@ -24,6 +24,22 @@ class BackupPipelineTests(unittest.TestCase):
         self.assertTrue(backup.is_excluded(Path("/home/example/Coding/covered/file.rs"), patterns))
         self.assertFalse(backup.is_excluded(Path("/home/example/Coding/kept/file.rs"), patterns))
 
+    def test_exclude_patterns_expand_home_environment_variable(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = Path(tmp) / "excludes.txt"
+            manifest.write_text("$HOME/.hermes/cache/**\n")
+            old_home = os.environ.get("HOME")
+            os.environ["HOME"] = "/home/example"
+            try:
+                patterns = backup.load_exclude_patterns([manifest])
+            finally:
+                if old_home is None:
+                    del os.environ["HOME"]
+                else:
+                    os.environ["HOME"] = old_home
+        self.assertEqual(patterns, ["/home/example/.hermes/cache/**"])
+        self.assertTrue(backup.is_excluded(Path("/home/example/.hermes/cache/a.db"), patterns))
+
     def test_sample_manifest_respects_excludes_and_includes_staged_sqlite(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

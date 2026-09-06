@@ -119,7 +119,7 @@ Priority is `impact × confidence × reversibility ÷ maintenance cost`. Reliabi
 ## Audit-rerunnable read-only evidence commands
 
 ```bash
-cd /home/sikmindz/Projects/hermes-workbench-os
+cd "$(git rev-parse --show-toplevel)"
 cat AGENTS.md
 uname -a; cat /etc/os-release; hostnamectl
 free -h; cat /proc/cmdline
@@ -154,7 +154,7 @@ bootctl status
 
 ## Completion receipt
 
-**Changed file:** `/home/sikmindz/Projects/hermes-workbench-os/docs/KERNEL-AND-RUNTIME-ROI.md` only.
+**Changed file:** `docs/KERNEL-AND-RUNTIME-ROI.md` only.
 
 **Commands/evidence used:** the commands in the audit block, plus live `git status`/repository discovery, targeted kernel/Fedora web searches, and primary-document URL lookup above.
 
