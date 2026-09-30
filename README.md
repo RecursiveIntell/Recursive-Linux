@@ -1,6 +1,6 @@
 # Recursive Linux — Hermes Workbench OS
 
-<!-- last-verified: 2026-09-06 -->
+<!-- Documentation/source/release-metadata review: 2026-09-30; artifact evidence remains dated 2026-09-06 -->
 
 A **Fedora 44 workstation installer prototype** and recovery-oriented workflow profile for a laptop-centered Linux environment. It packages reviewable, non-secret workstation controls—Wi-Fi fault recovery, a targeted PCIe ASPM mitigation, TLP policy, disk-space reporting, health projection, and existing Hermes Workbench systemd profiles—while keeping storage, identity, encryption, and device selection interactive.
 
@@ -21,7 +21,7 @@ The public, sanitized evidence receipt is [`receipts/public/20260906-workflow-im
 
 ## Release artifact
 
-The first GitHub pre-release is intended to attach the locally built candidate as an asset rather than placing a 1.22 GB binary in Git history.
+The [v0.1.0-experimental pre-release](https://github.com/RecursiveIntell/Recursive-Linux/releases/tag/v0.1.0-experimental) was published on September 6, 2026 and includes the ISO below as an uploaded release asset. The release metadata reports the same byte length and SHA-256 shown here; this documentation review did not download or boot the ISO. The binary is not placed in Git history.
 
 ```text
 File:    hermes-workbench-recovery-installer-20260906-v2.iso
