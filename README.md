@@ -54,7 +54,7 @@ The expected success signals are a JSON result with `"passed": true` from `valid
 
 ## Build an installer candidate
 
-The builder requires a local Fedora 44 netinstall ISO and Podman access to the Fedora container image. The documented command writes below this repository's ignored `build/` directory. **Each invocation recursively removes the existing `--build-dir` before rebuilding it.** Use a disposable build directory; do not point this option at files you need to keep. An existing output ISO is left untouched unless `--force` is supplied, which removes that ISO before replacement.
+The builder requires a local Fedora 44 netinstall ISO and Podman access to the Fedora container image. The documented command writes below this repository's ignored `build/` directory. **Each invocation recursively removes the existing `--build-dir` before rebuilding it.** Use a disposable build directory; do not point this option at files you need to keep. Keep `--output-iso` outside `--build-dir`: build-directory cleanup deletes everything inside it, including an existing ISO, even without `--force` or when using `--prepare-only`. For an output ISO outside that directory, the ISO-building step refuses to replace an existing file unless `--force` is supplied; `--force` deletes it before building the replacement.
 
 ```bash
 python3 -B scripts/build_installer_iso.py \
@@ -72,7 +72,7 @@ Builder options (defaults and behavior are from [`scripts/build_installer_iso.py
 | `--kickstart PATH` | `kickstart/hermes-workbench.ks.in` |
 | `--build-dir PATH` | `build/installer-production`; an existing directory is recursively removed on every invocation. |
 | `--input-iso PATH` | Required unless `--prepare-only` is used. |
-| `--output-iso PATH` | `build/output/hermes-workbench-installer.iso`; existing output requires `--force`. |
+| `--output-iso PATH` | `build/output/hermes-workbench-installer.iso`; keep outside `--build-dir`. The ISO-building step requires `--force` to replace an existing output. |
 | `--prepare-only` | Prepare the payload and rendered Kickstart without building an ISO or requiring `--input-iso`. |
 | `--force` | Remove an existing output ISO before replacement. |
 
