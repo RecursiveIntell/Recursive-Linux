@@ -1,6 +1,7 @@
 # Recursive Linux — Hermes Workbench OS
 
 <!-- Documentation/source/release-metadata review: 2026-09-30; artifact evidence remains dated 2026-09-06 -->
+<!-- last-verified: 2026-10-23 -->
 
 A **Fedora 44 workstation installer prototype** and recovery-oriented workflow profile for a laptop-centered Linux environment. It packages reviewable, non-secret workstation controls—Wi-Fi fault recovery, a targeted PCIe ASPM mitigation, TLP policy, disk-space reporting, health projection, and existing Hermes Workbench systemd profiles—while keeping storage, identity, encryption, and device selection interactive.
 
@@ -53,7 +54,7 @@ The expected success signals are a JSON result with `"passed": true` from `valid
 
 ## Build an installer candidate
 
-The builder requires a local Fedora 44 netinstall ISO and Podman access to the Fedora container image. It writes only below this repository's ignored `build/` directory.
+The builder requires a local Fedora 44 netinstall ISO and Podman access to the Fedora container image. The documented command writes below this repository's ignored `build/` directory. **Each invocation recursively removes the existing `--build-dir` before rebuilding it.** Use a disposable build directory; do not point this option at files you need to keep. Keep `--output-iso` outside `--build-dir`: build-directory cleanup deletes everything inside it, including an existing ISO, even without `--force` or when using `--prepare-only`. For an output ISO outside that directory, the ISO-building step refuses to replace an existing file unless `--force` is supplied; `--force` deletes it before building the replacement.
 
 ```bash
 python3 -B scripts/build_installer_iso.py \
@@ -62,6 +63,18 @@ python3 -B scripts/build_installer_iso.py \
   --input-iso /path/to/Fedora-Everything-netinst-x86_64-44-1.7.iso \
   --output-iso build/output/hermes-workbench-recovery-installer.iso
 ```
+
+Builder options (defaults and behavior are from [`scripts/build_installer_iso.py`](scripts/build_installer_iso.py)):
+
+| Option | Default or behavior |
+|---|---|
+| `-h`, `--help` | Show the parser's help text. |
+| `--kickstart PATH` | `kickstart/hermes-workbench.ks.in` |
+| `--build-dir PATH` | `build/installer-production`; an existing directory is recursively removed on every invocation. |
+| `--input-iso PATH` | Required unless `--prepare-only` is used. |
+| `--output-iso PATH` | `build/output/hermes-workbench-installer.iso`; keep outside `--build-dir`. The ISO-building step requires `--force` to replace an existing output. |
+| `--prepare-only` | Prepare the payload and rendered Kickstart without building an ISO or requiring `--input-iso`. |
+| `--force` | Remove an existing output ISO before replacement. |
 
 The hardware-target Kickstart does not preselect disk clearing, automatic partitioning, storage, encryption, identity, or the installation target. Installation remains interactive, but proceeding can still modify storage and boot state. Do not convert that boundary into an unattended hardware installation without an explicit device-bound design, validation, and approval.
 
